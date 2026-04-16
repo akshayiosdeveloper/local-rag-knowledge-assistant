@@ -117,6 +117,26 @@ Streaming UI (SwiftUI)
 
 ---
 
+## 🎥 Demo
+
+👉 [Watch Demo Video](https://youtu.be/O7MP3EIqig0)
+
+---
+
+## 📸 Screenshots
+
+<p align="center">
+  <b>iOS app showing input, prediction result, and loading state</b>
+</p>
+
+<p align="center">
+  <img src="assets/screenshots/input.png" width="260" height="540"/>
+  <img src="assets/screenshots/result.png" width="260" height="540"/>
+  <img src="assets/screenshots/result_part2.png" width="260" height="540"/>
+</p>
+
+---
+
 # 🧱 Tech Stack
 
 ## 📱 Frontend (iOS)
