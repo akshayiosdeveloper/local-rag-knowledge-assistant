@@ -2,6 +2,12 @@
 
 A **production-style Retrieval-Augmented Generation (RAG)** system with a **SwiftUI iOS app frontend** and **fully local AI backend**.
 
+![SwiftUI](https://img.shields.io/badge/Frontend-SwiftUI-orange)
+![FastAPI](https://img.shields.io/badge/Backend-FastAPI-green)
+![Ollama](https://img.shields.io/badge/LLM-Ollama-blue)
+![ChromaDB](https://img.shields.io/badge/VectorDB-ChromaDB-purple)
+![License](https://img.shields.io/badge/License-MIT-yellow)
+
 ---
 
 # 🎯 Project Overview
@@ -124,6 +130,8 @@ Streaming UI (SwiftUI)
 ---
 
 ## 📸 Screenshots
+
+## 💬 Chat Interface
 
 <p align="center">
   <b>iOS app showing input, prediction result, and loading state</b>
