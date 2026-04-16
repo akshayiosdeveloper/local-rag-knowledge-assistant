@@ -1,267 +1,248 @@
-# 🚀 Advanced Personal Knowledge Assistant (RAG System)
+# 🚀 RAG Assistant (iOS + FastAPI)
 
-An end-to-end **Retrieval-Augmented Generation (RAG)** system built from scratch using a **fully local setup**.
-This project demonstrates deep understanding of how modern AI systems retrieve, rank, and generate answers grounded in data.
-
----
-
-## 📌 Overview
-
-This system allows you to:
-
-- 📄 Upload and index multiple documents
-- ❓ Ask questions based on those documents
-- 🧠 Retrieve the most relevant context using vector similarity
-- 🤖 Generate accurate answers using a local LLM
-- 🔍 View source chunks used for answering
+A **production-style Retrieval-Augmented Generation (RAG)** system with a **SwiftUI iOS app frontend** and **fully local AI backend**.
 
 ---
 
-## 🧠 How It Works (RAG Pipeline)
+# 🎯 Project Overview
 
-```
-User Query
-   ↓
-Embedding (nomic-embed-text via Ollama)
-   ↓
-Vector Search (ChromaDB)
-   ↓
+This project demonstrates an **end-to-end AI system**:
+
+- 📱 iOS App (SwiftUI)
+- ⚙️ FastAPI Backend
+- 🧠 Local LLM (Ollama)
+- 🗄️ Vector Database (ChromaDB)
+
+The system retrieves relevant context from documents and generates **grounded, explainable answers with sources**.
+
+---
+
+# 🧠 Architecture
+
+```text
+User (iOS App)
+      ↓
+FastAPI (/ask)
+      ↓
+Embedding (Ollama)
+      ↓
+ChromaDB (Vector Search)
+      ↓
 Top-K Retrieval
-   ↓
+      ↓
 Re-ranking (Cosine Similarity)
-   ↓
+      ↓
 Context Selection
-   ↓
-LLM Generation (Llama 3 via Ollama)
-   ↓
-Final Answer + Sources
+      ↓
+LLM (Ollama - llama3)
+      ↓
+Response (Answer + Sources)
+      ↓
+Streaming UI (SwiftUI)
 ```
 
 ---
 
-## 🛠️ Tech Stack
+# 📱 iOS App Features (SwiftUI)
 
-- **LLM**: Ollama (`llama3:8b-instruct`)
-- **Embeddings**: `nomic-embed-text`
-- **Vector Database**: ChromaDB
-- **Backend**: FastAPI
-- **Language**: Python
+## 💬 Chat Interface
 
----
+- Clean chat UI (SwiftUI)
+- User vs AI message bubbles
+- Auto-scroll to latest message
 
-## ✨ Features
+## ⚡ Streaming Response
 
-- ✅ Multi-document support
-- ✅ Context-aware question answering
-- ✅ Chunking with overlap for better retrieval
-- ✅ Cosine similarity-based re-ranking
-- ✅ Metadata filtering (source-aware retrieval)
-- ✅ Source attribution for transparency
-- ✅ Fully local (no external APIs required)
-- ✅ FastAPI backend for real-world usage
+- Word-by-word AI response
+- Cursor indicator (`|`) while streaming
+- Smooth real-time updates
 
----
+## ⏳ Typing Indicator
 
-## 📂 Project Structure
+- Animated 3-dot typing indicator
+- Replaced by streaming response
 
-```
-local-rag-knowledge-assistant/
-├── data/                # Input documents
-├── src/
-│   ├── api.py           # FastAPI backend
-│   ├── ingest.py        # Document processing & chunking
-│   ├── embed.py         # Embedding generation
-│   ├── store.py         # Store data in ChromaDB
-│   ├── retrieve.py      # Retrieval + re-ranking
-│   ├── generate.py      # LLM response generation
-├── vectordb/            # Persistent vector database
-├── main.py              # CLI entry point
-├── requirements.txt
-├── README.md
-```
+## 📚 Source Attribution (Key Feature)
+
+- Displays sources below AI response
+- Collapsible / expandable UI
+- Improves transparency and trust
+
+## 🧹 Clear Chat
+
+- Trash button in navigation bar
+- Confirmation alert before clearing
+- Disabled when chat is empty
+
+## 🎨 UI Enhancements
+
+- Modern input field (rounded)
+- Floating send button (SF Symbol)
+- Navigation title with icon
+- Clean spacing and layout
 
 ---
 
-## ⚙️ Setup Instructions
+# ⚙️ Backend Features (FastAPI)
 
-### 1. Clone Repository
+## 🔌 API Endpoint
 
-```bash
-git clone <your-repo-link>
-cd local-rag-knowledge-assistant
-```
+- `POST /ask`
+- Input: user query
+- Output:
 
----
-
-### 2. Create Virtual Environment
-
-```bash
-python -m venv venv
-source venv/bin/activate   # Mac/Linux
+```json
+{
+  "answer": "...",
+  "sources": [{ "content": "...", "id": 1 }]
+}
 ```
 
+## 🧠 RAG Pipeline
+
+- Document ingestion & chunking
+- Embedding generation (Ollama)
+- Vector storage (ChromaDB)
+- Similarity search (top-k)
+- Custom re-ranking (cosine similarity)
+
+## 📂 Multi-Document Support
+
+- Loads multiple files from `data/`
+- Cross-document querying
+
+## 🏷️ Metadata Filtering
+
+- Source tracking for each chunk
+
 ---
 
-### 3. Install Dependencies
+# 🧱 Tech Stack
+
+## 📱 Frontend (iOS)
+
+- SwiftUI
+- MVVM Architecture
+- URLSession (API calls)
+
+## ⚙️ Backend
+
+- FastAPI
+- Python
+
+## 🧠 AI / ML
+
+- Ollama (`llama3:8b-instruct`)
+- Ollama (`nomic-embed-text`)
+
+## 🗄️ Database
+
+- ChromaDB (Vector DB)
+
+---
+
+# 🧠 Key Concepts Implemented
+
+- Retrieval-Augmented Generation (RAG)
+- Vector Embeddings
+- Cosine Similarity
+- Re-ranking
+- Streaming UI updates
+- MVVM architecture (iOS)
+
+---
+
+# 🔄 App Flow
+
+```text
+User types question
+      ↓
+Message sent to FastAPI
+      ↓
+Typing indicator shown
+      ↓
+Response received
+      ↓
+Typing removed
+      ↓
+AI response streams word-by-word
+      ↓
+Sources displayed below answer
+```
+
+---
+
+# 🚀 How to Run
+
+## 1️⃣ Backend (FastAPI)
 
 ```bash
 pip install -r requirements.txt
+uvicorn main:app --reload
 ```
 
----
-
-### 4. Install & Start Ollama
+## 2️⃣ Run Ollama Models
 
 ```bash
-ollama serve
+ollama run llama3:8b-instruct
+ollama run nomic-embed-text
+```
+
+## 3️⃣ iOS App
+
+- Open project in Xcode
+- Run on simulator/device
+- Ensure backend is running at:
+
+```
+http://127.0.0.1:8000
 ```
 
 ---
 
-### 5. Pull Required Models
+# 📸 Features Showcase
 
-```bash
-ollama pull llama3:8b-instruct
-ollama pull nomic-embed-text
-```
-
----
-
-### 6. Run Initial Indexing
-
-```bash
-python main.py
-```
+- 💬 Chat-based interface
+- ⚡ Streaming AI responses
+- 📚 Source-backed answers
+- 🧹 Clear chat functionality
 
 ---
 
-## 🚀 API Usage (FastAPI)
+# 💪 Strengths of This Project
 
-### Start Server
-
-```bash
-uvicorn src.api:app --reload
-```
-
----
-
-### Open API Docs
-
-```
-http://127.0.0.1:8000/docs
-```
+- Fully local AI system (no external APIs)
+- End-to-end architecture (frontend + backend)
+- Explainable AI (source attribution)
+- Real-time streaming UX
+- Clean MVVM architecture
 
 ---
 
-### Endpoint
+# 🔮 Future Improvements
 
-**POST /ask**
-
----
-
-### Example Request
-
-```json
-{
-  "query": "What is machine learning?"
-}
-```
+- PDF upload support
+- Hybrid search (keyword + vector)
+- LLM-based re-ranking
+- Conversation memory
+- Streaming directly from backend (token streaming)
+- Deployment (cloud + mobile release)
 
 ---
 
-### Example Response
+# 👨‍💻 Author
 
-```json
-{
-  "query": "What is machine learning?",
-  "answer": "Machine learning is a method of data analysis...",
-  "sources": [
-    {
-      "id": 1,
-      "content": "Machine learning is a method of data analysis..."
-    }
-  ]
-}
-```
+Akshay Kumar
 
 ---
 
-## 🔍 Key Concepts Implemented
+# ⭐ Why This Project Matters
 
-### 📌 Chunking with Overlap
+This project demonstrates the ability to:
 
-- Prevents loss of context
-- Improves retrieval accuracy
-
-### 📌 Embeddings
-
-- Converts text into vectors
-- Enables semantic search
-
-### 📌 Vector Search (ChromaDB)
-
-- Stores embeddings + metadata
-- Retrieves similar chunks using cosine similarity
-
-### 📌 Re-Ranking
-
-- Improves retrieval quality
-- Filters out irrelevant chunks
-
-### 📌 Prompt Engineering
-
-- Forces grounded answers
-- Reduces hallucination
+- Build **AI-powered applications end-to-end**
+- Design **clean architecture (MVVM + API)**
+- Implement **real-world RAG systems**
+- Focus on **UX + explainability**
 
 ---
-
-## 🎥 Demo
-
-Example:
-
-**Q:** What is machine learning?
-**A:** Machine learning is a method of data analysis that automates analytical model building...
-
-**Sources:**
-
-- Machine learning (ML) is a subset of AI...
-- It enables systems to learn from data...
-
----
-
-## ⚠️ Limitations
-
-- Retrieval quality depends on chunking strategy
-- LLM may still produce imperfect answers if context is weak
-- No UI (API-based system)
-
----
-
-## 🚀 Future Improvements
-
-- 📄 PDF upload support
-- 💬 Chat interface (UI)
-- 🔍 Hybrid search (keyword + vector)
-- 🧠 LLM-based re-ranking
-- 📊 Evaluation metrics
-
----
-
-## 💡 Learnings
-
-- RAG is only as good as its retrieval
-- Embeddings capture semantic meaning, not exact text
-- LLMs are pattern generators, not truth sources
-- Prompt design significantly affects output quality
-
----
-
-## 📌 Author
-
-**Akshay Kumar**
-
----
-
-## ⭐ If you like this project
-
-Give it a ⭐ on GitHub and connect with me on LinkedIn!
