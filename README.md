@@ -198,36 +198,6 @@ AI response streams word-by-word
 Sources displayed below answer
 ```
 
----
-
-# 🚀 How to Run
-
-## 1️⃣ Backend (FastAPI)
-
-```bash
-pip install -r requirements.txt
-uvicorn main:app --reload
-```
-
-## 2️⃣ Run Ollama Models
-
-```bash
-ollama run llama3:8b-instruct
-ollama run nomic-embed-text
-```
-
-## 3️⃣ iOS App
-
-- Open project in Xcode
-- Run on simulator/device
-- Ensure backend is running at:
-
-```
-http://127.0.0.1:8000
-```
-
----
-
 # 📸 Features Showcase
 
 - 💬 Chat-based interface
