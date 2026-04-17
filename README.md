@@ -138,9 +138,9 @@ Streaming UI (SwiftUI)
 </p>
 
 <p align="center">
-  <img src="assets/screenshots/result1.png" width="260" height="540"/>
-  <img src="assets/screenshots/result2.png" width="260" height="540"/>
-  <img src="assets/screenshots/result3.png" width="260" height="540"/>
+  <img src="assets/result1.png" width="260" height="540"/>
+  <img src="assets/result2.png" width="260" height="540"/>
+  <img src="assets/result3.png" width="260" height="540"/>
 </p>
 
 ---
