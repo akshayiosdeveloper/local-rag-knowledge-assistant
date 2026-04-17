@@ -125,7 +125,7 @@ Streaming UI (SwiftUI)
 
 ## 🎥 Demo
 
-👉 [Watch Demo Video](https://youtu.be/O7MP3EIqig0)
+👉 [Watch Demo Video](https://youtu.be/jARo4wKu8f4?si=B_RsIzzZKQ5LRg7Q)
 
 ---
 
@@ -134,13 +134,13 @@ Streaming UI (SwiftUI)
 ## 💬 Chat Interface
 
 <p align="center">
-  <b>iOS app showing input, prediction result, and loading state</b>
+  <b>iOS app rag result </b>
 </p>
 
 <p align="center">
-  <img src="assets/screenshots/input.png" width="260" height="540"/>
-  <img src="assets/screenshots/result.png" width="260" height="540"/>
-  <img src="assets/screenshots/result_part2.png" width="260" height="540"/>
+  <img src="assets/screenshots/result1.png" width="260" height="540"/>
+  <img src="assets/screenshots/result2.png" width="260" height="540"/>
+  <img src="assets/screenshots/result3.png" width="260" height="540"/>
 </p>
 
 ---
